@@ -176,7 +176,7 @@ contract Xballot is CustomChanIbcApp {
         dispatcher.sendPacket(channelId, payload, timeoutTimestamp);
     }
 
-    function onRecvPacket(IbcPacket memory packet) external override onlyIbcDispatcher returns (AckPacket memory ackPacket) {
+    function onRecvPacket(IbcPacket memory) external override view onlyIbcDispatcher returns (AckPacket memory ackPacket) {
         require(false, "This function should not be called");
 
         return AckPacket(true, abi.encode("This function should not be called"));

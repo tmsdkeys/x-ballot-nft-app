@@ -11,6 +11,8 @@ contract XProofOfVoteNFT is ERC721, CustomChanIbcApp {
     using Counters for Counters.Counter;
     Counters.Counter private currentTokenId;
 
+    string tokenURIPolyVote;
+
     constructor(IbcDispatcher _dispatcher, string memory _tokenURIPolyVote) 
     CustomChanIbcApp(_dispatcher) ERC721("ProofOfVoteNFT", "Polymeranian"){
         tokenURIPolyVote = _tokenURIPolyVote;
@@ -50,11 +52,11 @@ contract XProofOfVoteNFT is ERC721, CustomChanIbcApp {
         return AckPacket(true, ackData);
     }
 
-    function onAcknowledgementPacket(IbcPacket calldata, AckPacket calldata ack) external override onlyIbcDispatcher {
+    function onAcknowledgementPacket(IbcPacket calldata, AckPacket calldata) external view override onlyIbcDispatcher {
         require(false, "This contract should never receive an acknowledgement packet");
     }
 
-    function onTimeoutPacket(IbcPacket calldata packet) external override onlyIbcDispatcher {
+    function onTimeoutPacket(IbcPacket calldata) external view override onlyIbcDispatcher {
         require(false, "This contract should never receive a timeout packet");
     }
 }
