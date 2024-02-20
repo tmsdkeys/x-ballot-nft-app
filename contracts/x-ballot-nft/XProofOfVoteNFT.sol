@@ -5,7 +5,7 @@ pragma solidity ^0.8.9;
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
-import './base/CustomChanIbcApp.sol';
+import '../base/CustomChanIbcApp.sol';
 
 contract XProofOfVoteNFT is ERC721, CustomChanIbcApp {
     using Counters for Counters.Counter;

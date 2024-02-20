@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.9;
 
-import './base/CustomChanIbcApp.sol';
+import '../base/CustomChanIbcApp.sol';
 
 /** 
  * @title XBallot
