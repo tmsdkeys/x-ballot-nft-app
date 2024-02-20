@@ -21,11 +21,12 @@ contract XCounterUC is UniversalChanIbcApp {
 
     /**
      * @dev Sends a packet with a greeting message over a specified channel.
+     * @param destPortAddr The address of the destination application to be used in the port identifier.
      * @param channelId The ID of the channel to send the packet to.
      * @param timeoutSeconds The timeout in seconds (relative).
      */
 
-    function sendUniversalPacket( bytes32 channelId, uint64 timeoutSeconds) external {
+    function sendUniversalPacket( address destPortAddr, bytes32 channelId, uint64 timeoutSeconds) external {
         increment();
         bytes memory payload = abi.encode(msg.sender);
 
@@ -33,7 +34,7 @@ contract XCounterUC is UniversalChanIbcApp {
 
         IbcUniversalPacketSender(mw).sendUniversalPacket(
             channelId,
-            IbcUtils.toBytes32(address(this)),
+            IbcUtils.toBytes32(destPortAddr),
             payload,
             timeoutTimestamp
         );

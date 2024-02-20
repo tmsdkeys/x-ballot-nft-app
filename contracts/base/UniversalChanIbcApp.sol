@@ -36,7 +36,8 @@ contract UniversalChanIbcApp is IbcMwUser, IbcUniversalPacketReceiver {
 
     function sendPacket(
         address destPortAddr, 
-        bytes32 channelId, bytes calldata message, 
+        bytes32 channelId, 
+        bytes calldata message, 
         uint64 timeoutTimestamp
     ) external virtual {
         IbcUniversalPacketSender(mw).sendUniversalPacket(
